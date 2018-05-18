@@ -1,0 +1,17 @@
+void setup() {
+  size(1366, 768);
+}
+
+void draw() {
+  background(#cc9900);
+  //grid row 1
+  for (int i = 50; i <= 866; i += 136) {
+    fill(#996633);
+    rect(i, 50, 136, 136);
+  }
+  //grid row 2
+  for (int i = 50; i <= 866; i += 136) {
+    fill(#996633);
+    rect(i, 186, 136, 136);
+  }  
+}
