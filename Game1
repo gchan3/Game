@@ -1,11 +1,17 @@
 PVector[] enemyPosition;
 
-int resource = 0;
+int resource, gridA1X, gridA1Y, gridA1Radius, gridRadius;
+
 long time;
-int towerPanel = 0;
 
 void setup() {
   size(1366, 768);
+  
+  resource = 0;
+  //grid codes
+  gridA1X = 50;
+  gridA1Y = 50;
+  gridRadius = 68;
   
   enemyPosition = new PVector[10];
   for (int i = 0; i < enemyPosition.length; i ++) {
@@ -72,7 +78,11 @@ void draw() {
   }
 }  
 
-void mouseClicked() {
-  // towers
-
+void mousePressed() {
+  float d = dist(mouseX, mouseY, gridA1X, gridA1Y);
+ 
+  if (d <= gridRadius) {
+    fill(#996633);
+    rect(1200, 0, 500, 500);
+  }
 }
