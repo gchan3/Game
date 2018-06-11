@@ -1,36 +1,50 @@
+float buttonRadius;
 
-
-int buttonColor, buttonX, buttonY, buttonRadius, score, cookies;
+int buttonColor, buttonX, buttonY, score, cookies, textColor, coins, cgps;
 int autoClickerCost = 15;
 int autoClickerOwned = 0;
 int autoClickerColor = 255;
 int CPS = 0;
+
+boolean coinUpgrade = false;
+
 void setup() {
   size(1366, 768);
-  buttonColor = color(255, 0, 0);
-  buttonX = width/2;
-  buttonY = height/2;
-  buttonRadius = 100;
+  textColor = color(#FFFFFF);
+  buttonColor = color(#74562C);
+  buttonX = width / 2 - 250 + 25;
+  buttonY = height / 2;
+  buttonRadius = 250;
+  cgps = 5;
 }
 
 void draw() {
-  background(255);
+  background(#00B2FF);
   fill(buttonColor);
   ellipse(buttonX, buttonY, buttonRadius*2, buttonRadius*2);
+  fill(textColor);
   textSize(32);
-  text(score, 700,50); 
+  text(score, 700, 50); 
  
-   println(mouseX, mouseY);
+  println(mouseX, mouseY);
+  
+  //upgrade panel
+  fill(#787878);
+  rect(866, -1, 500, 770);
+  fill(textColor);
+  textSize(40);
+  text("Coins: " + coins, 872, 50);
+  
   //upgrade
-  if(score>=25){
+  if(score % 25 == 0 && score > 0) {
   textSize(30);
   text("Upgrade", 338, 600);
   
   //CPS
-  fill(#8A84E2);
+  fill(#FFFFFF);
   textSize(25);
   text("CPS: ", 100, 100);
-  cookies = cookies + CPS * 1/60;
+  cookies = cookies + CPS * 1 / 60;
   CPS = 100 ;
   
   //auto clicker
@@ -44,22 +58,24 @@ void draw() {
 void mousePressed() {
   float d = dist(mouseX, mouseY, buttonX, buttonY);
   
+  
   if (d <= buttonRadius) {  
-    buttonColor = color(255,0, 0);
-    buttonRadius = buttonRadius +20;
-    score++;
+    buttonColor = color(#74562C);
+    score += 1;
+    buttonRadius = buttonRadius - 62.5;
+ 
+    if (buttonRadius <= 0) {
+      buttonRadius = buttonRadius + 250;
+      coins += cgps;
+    }
   }
 }
 
 //when button is released
 void mouseReleased() {
-  buttonColor = color(255, 0, 0);
-  buttonRadius = buttonRadius - 20;
-  
+  buttonColor = color(#74562C);
 }
 
-
-//upgrades
-
-  
-  
+void mouseClicked() {
+     
+}
