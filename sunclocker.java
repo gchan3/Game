@@ -1,4 +1,5 @@
-startscreen;
+PImage startscreen;
+PImage panels;
 
 float suns = 0;
 float CPS = 0;
@@ -21,7 +22,7 @@ float portalImage;
 
 
 //Cookie
-float cookieX = 583;
+float cookieX = 474;
 float cookieY = 100;
 float cookieW = 200;
 float cookieH = 200;
@@ -64,6 +65,7 @@ void setup() {
   background(255);
   frameRate(60);
   startscreen = loadImage("9-2-cookie-png-image.png");
+  panels = loadImage("panel-background.png");
 //Icons
 
 
@@ -71,7 +73,10 @@ void setup() {
 
 
 void draw() {
-  background(255);
+  background(#00A2FF);
+  fill(#994C00);
+  rect(0, 0, 290, 768);
+  fill(0);
   textSize(20);
   text("C " + nf(suns, 0, 2), 20, 30 );
   stroke(1);
@@ -86,6 +91,14 @@ void draw() {
   suns = suns + CPS * 1/60;
   CPS = autoClickerOwned * 1 + grandmaOwned * 5 + factoryOwned * 10 + mineOwned * 25 + labOwned * 50 + portalOwned * 100;
   
+//Panel
+  fill(#994C00);
+  rect(866, 0, 500, 768);
+  fill(#663300);
+  rect(880, 240, 475, 100);
+  rect(880, 350, 475, 100);
+  rect(880, 460, 475, 100);
+  rect(880, 570, 475, 100);
 
 //Start items --------------------------------------------------------------------------------------------------\\
 //Auto Clicker.
@@ -261,6 +274,9 @@ void draw() {
   if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && suns >= portalCost) {
     portalColor = 245;
   }
+  
+  image(panels, 880, 20, 475, 100);
+  image(panels, 880, 130, 475, 100);
 //End of items --------------------------------------------------------------------------------------------------\\
   
   //Shop Lines
@@ -344,4 +360,9 @@ void mouseClicked() {
 void drawCookie() {
   noStroke();
     image(startscreen, cookieX, cookieY, cookieW, cookieH);
+}
+
+void drawPanel() {
+  noStroke();
+    image(panels, 880, 20, 475, 100);
 }
