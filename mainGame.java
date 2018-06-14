@@ -1,4 +1,4 @@
-PImage startscreen;
+PImage sun;
 PImage panels;
 
 float suns = 0;
@@ -22,10 +22,10 @@ float portalImage;
 
 
 //Cookie
-float cookieX = 474;
-float cookieY = 100;
-float cookieW = 200;
-float cookieH = 200;
+float cookieX = 374;
+float cookieY = -20;
+float cookieW = 400;
+float cookieH = 400;
 
 //Auto clicker
 float autoClickerCost = 15;
@@ -64,8 +64,8 @@ void setup() {
   size(1366,768);
   background(255);
   frameRate(60);
-  startscreen = loadImage("9-2-cookie-png-image.png");
-  panels = loadImage("panel-background.png");
+  sun = loadImage("sun.png");
+  panels = loadImage("panelBackground.png");
 //Icons
 
 
@@ -78,11 +78,11 @@ void draw() {
   rect(0, 0, 290, 768);
   fill(0);
   textSize(20);
-  text("C " + nf(suns, 0, 2), 20, 30 );
+  text("$" + nf(suns, 0, 2), 20, 30 );
   stroke(1);
   
   noStroke();
-    image(startscreen, cookieX, cookieY, cookieW, cookieH);
+    image(sun, cookieX, cookieY, cookieW, cookieH);
   
 // CPS calculation.
   fill(0);
@@ -91,8 +91,8 @@ void draw() {
   suns = suns + CPS * 1/60;
   CPS = autoClickerOwned * 1 + grandmaOwned * 5 + factoryOwned * 10 + mineOwned * 25 + labOwned * 50 + portalOwned * 100;
   
-//Panel
-  fill(#994C00);
+//building
+  fill(#B5B5B5);
   rect(866, 0, 500, 768);
   fill(#663300);
   rect(880, 240, 475, 100);
@@ -108,7 +108,7 @@ void draw() {
   
   textSize(14);
   text("Buy auto clicker. (1 CPS)", 25, 65);
-  text("Price: C " + nf(autoClickerCost, 0, 2), 25, 83);
+  text("Price: $" + nf(autoClickerCost, 0, 2), 25, 83);
   text("Auto Clickers Owned:", 25, 100);
   text(autoClickerOwned, 25, 120);
   
@@ -122,8 +122,8 @@ void draw() {
   fill(0);
   
   textSize(14);
-  text("Buy grandma. (5 CPS)", 25, 145);
-  text("Price: C " + nf(grandmaCost, 0, 2), 25, 163);
+  text("Buy peashooter seeds.", 25, 145);
+  text("Price: $" + nf(grandmaCost, 0, 2), 25, 163);
   text("Grandmas Owned:", 25, 180);
   text(grandmaOwned, 25, 200);
   
@@ -137,8 +137,8 @@ void draw() {
   fill(0);
   
   textSize(14);
-  text("Buy factory. (10 CPS)", 25, 225);
-  text("Price: C " + nf(factoryCost, 0, 2), 25, 243);
+  text("Buy bok choy seeds. ($250 sb)", 25, 225);
+  text("Price: $" + nf(factoryCost, 0, 2), 25, 243);
   text("Factories Owned:", 25, 260);
   text(factoryOwned, 25, 280);
   
@@ -152,8 +152,8 @@ void draw() {
   fill(0);
   
   textSize(14);
-  text("Buy mine. (25 CPS)", 25, 305);
-  text("Price: C " + nf(mineCost, 0, 2), 25, 323);
+  text("Buy sunflower seeds. (25 CPS)", 25, 305);
+  text("Price: $" + nf(mineCost, 0, 2), 25, 323);
   text("Mines Owned:", 25, 340);
   text(mineOwned, 25, 360);
   
@@ -166,9 +166,9 @@ void draw() {
   rect(20, 370, 250, 75);
   fill(0);
   
-  textSize(14);
-  text("Buy Cookie lab. (50 CPS)", 25, 385);
-  text("Price: C " + nf(labCost, 0, 2), 25, 403);
+  textSize(13);
+  text("Buy ultra peashooter seeds. (50 CPS)", 25, 385);
+  text("Price: $" + nf(labCost, 0, 2), 25, 403);
   text("Cookie Labs Owned:", 25, 420);
   text(labOwned, 25, 440);
   
@@ -182,8 +182,8 @@ void draw() {
   fill(0);
   
   textSize(14);
-  text("Buy Portal. (100 CPS)", 25, 465);
-  text("Price: C " + nf(portalCost, 0, 2), 25, 483);
+  text("Buy peasoldier seeds. (100 CPS)", 25, 465);
+  text("Price: $" + nf(portalCost, 0, 2), 25, 483);
   text("Portals Owned:", 25, 500);
   text(portalOwned, 25, 520);
   
@@ -359,7 +359,7 @@ void mouseClicked() {
 
 void drawCookie() {
   noStroke();
-    image(startscreen, cookieX, cookieY, cookieW, cookieH);
+    image(sun, cookieX, cookieY, cookieW, cookieH);
 }
 
 void drawPanel() {
